@@ -1,8 +1,10 @@
 #!/sbin/openrc-run
 
 name="scanservjs"
+pidfile="/run/${RC_SVCNAME}.pid"
 command="/usr/bin/node"
-command_args=/var/www/scanservjs/server/server.js"
+directory="/var/www/scanservjs/"
+command_args="./server/server.js"
 command_background=true
 
 depend() {
