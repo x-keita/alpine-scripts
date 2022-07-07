@@ -14,6 +14,6 @@ apk update && apk add --no-cache bash curl
 Install [scanservjs](https://github.com/sbs20/scanservjs)
 
 ```bash
-curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | sudo bash -s --
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh -o /tmp/install-scanservjs.sh && bash /tmp/install-scanservjs.sh & rm -rf bash /tmp/install-scanservjs.sh
 ```
 
