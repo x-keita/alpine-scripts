@@ -59,10 +59,12 @@ chmod 755    $udevrulefile
 # Cleanup
 rm -rf /tmp/brscan4-0.4.10-1.amd64.deb /tmp/brscan4
 
-echo "-----------------------------------------------------------------------"
-echo "Installed!"
-echo "You can run -> scanimage -L <- and your scanner should appear!"
-echo "If you don't need dpkg you can uninstall it using -> apk del dpkg <-"
-echo "-----------------------------------------------------------------------"
+    cat << EOF
 
-exit 0
+------------------------------------------------------------------------------------
+Installed! You can run -> scanimage -L <- and your scanner should appear.
+
+Also if you don't use dpkg you can uninstall it using " apk del dpkg ".
+------------------------------------------------------------------------------------
+
+EOF
