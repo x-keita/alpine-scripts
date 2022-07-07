@@ -14,7 +14,7 @@ apk update && apk add --no-cache bash curl
 Install [scanservjs](https://github.com/sbs20/scanservjs)
 
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh -o /tmp/install-scanservjs.sh && bash /tmp/install-scanservjs.sh & rm -rf bash /tmp/install-scanservjs.sh
+curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
 ```
 
 ## Drivers
@@ -22,7 +22,7 @@ curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh
 Install Brother brscan4 scanner driver for SANE (Requires to have sane-utils already installed!)
 
 ```bash
-curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-brscan4.sh -o /tmp/install-brscan4.sh && bash /tmp/install-brscan4.sh & rm -rf bash /tmp/install-brscan4.sh
+curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
 ```
 
 
