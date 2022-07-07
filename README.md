@@ -7,7 +7,7 @@ Scripts for installing stuff on Alpine Linux / Alpine LXC instead of doing it ma
 You need to install bash and curl before running any script. Run the following lines on the terminal
 
 ```bash
-apk update && apk add install --no-cache bash curl
+apk update && apk add --no-cache bash curl
 ```
 ## Scripts
 
