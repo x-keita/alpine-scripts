@@ -48,4 +48,4 @@ echo "/var/www/scanservjs/server/config.js"
 echo ""
 echo "And replace port: 8080 in line 17 by your preferred one"
 echo "-----------------------------------------------------------------------------------"
-echo "Press CTRL+C to close script because I don't know how to program an exit signal lol
+echo "Press CTRL+C to close script because I don't know how to program an exit signal lol"
