@@ -15,6 +15,8 @@ apk update && apk add --no-cache \
   sane-backends \
   tesseract-ocr
 
+# Create install folder
+mkdir -p /var/www/scanservjs
 # Download latest scanservjs release
 curl -L $url | tar -zxf - -C /var/www/scanservjs/
 
