@@ -22,7 +22,7 @@ curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh
 Install Brother brscan4 scanner driver for SANE (Requires to have sane-utils already installed!)
 
 ```bash
-curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
+curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-brscan4.sh | bash --
 ```
 
 
