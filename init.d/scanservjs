@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+name="scanservjs"
+command="/usr/bin/node"
+command_args=/var/www/scanservjs/server/server.js"
+command_background=true
+
+depend() {
+	need net
+}
