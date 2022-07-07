@@ -13,7 +13,7 @@ apk update && apk add --no-cache \
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/drivers/scanner/brscan4-0.4.10-1.amd64.deb -o /tmp/brscan4-0.4.10-1.amd64.deb
 
 # Unpackage deb file
-dpkg-deb -xv brscan4-0.4.10-1.amd64.deb $install_temp
+dpkg-deb -xv /tmp/brscan4-0.4.10-1.amd64.deb $install_temp
 
 # Copy files from packages
 cp -r $install_temp/usr/bin/* /usr/bin
