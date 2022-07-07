@@ -59,9 +59,6 @@ chmod 755    $udevrulefile
 # Cleanup
 rm -rf /tmp/brscan4-0.4.10-1.amd64.deb /tmp/brscan4
 
-exit 1
-
-
 echo "----------------------------------------------------------------------------------"
 echo "You probably saw some errors but it's probably fine, probably."
 echo "You can run -> scanimage -L <- and your scanner should appear!"
@@ -71,3 +68,4 @@ echo "Press CTRL+C to close script because I don't know how to program an exit s
 echo "-----------------------------------------------------------------------------------"
 
 
+exit 1
