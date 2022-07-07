@@ -28,8 +28,8 @@ curl -L $url | tar -zxf - -C /var/www/scanservjs/
     /etc/ImageMagick-7/policy.xml
 
 # Install npm dependencies
-npm install -g npm@7.11.2
-cd /var/www/scanservjs/ && npm install --production
+npm install -g npm@8.3.0
+cd /var/www/scanservjs/ && npm install --only=production
 
 # Create service
 curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/scanservjs -o /etc/init.d/scanservjs
@@ -39,13 +39,14 @@ rc-update add scanservjs default
 # Start server
 rc-service scanservjs start
 
-echo ""
-echo "----------------------------------------------------------------------------------"
-echo "Installed!"
-echo "scanservjs runs by default on port 8080, if you have any issues edit"
-echo ""
-echo "/var/www/scanservjs/server/config.js"
-echo ""
-echo "And replace port: 8080 in line 17 by your preferred one"
-echo "-----------------------------------------------------------------------------------"
-echo "Press CTRL+C to close script because I don't know how to program an exit signal lol"
+    cat << EOF
+
+------------------------------------------------------------------------------------
+Installed! By default scanservjs runs on port 8080, if you have any issues you can
+change the port by editing /var/www/scanservjs/server/config.js @ Line 17
+
+Also, by default files are saved into /var/www/scanservjs/data/output you can change
+this by editing /var/www/scanservjs/server/config.js @ Line 47
+------------------------------------------------------------------------------------
+
+EOF
