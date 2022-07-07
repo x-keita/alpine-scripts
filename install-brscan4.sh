@@ -64,3 +64,5 @@ echo "Installed!"
 echo "You can run -> scanimage -L <- and your scanner should appear!"
 echo "If you don't need dpkg you can uninstall it using -> apk del dpkg <-"
 echo "-----------------------------------------------------------------------"
+
+exit 0
