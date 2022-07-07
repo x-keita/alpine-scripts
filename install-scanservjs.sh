@@ -36,11 +36,16 @@ curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/sca
 chmod 755 /etc/init.d/scanservjs
 # Add service
 rc-update add scanservjs default
+# Start server
+rc-service scanservjs start
 
 echo ""
-echo "Installed! Run -> rc-service scanservjs start <- or reboot to start the server"
-echo "scanservjs runs by default on port 8080, if you have any issues run"
+echo "------------------------------------------------------------------------------"
+echo "Installed!"
+echo "scanservjs runs by default on port 8080, if you have any issues edit"
 echo ""
-echo "vi /var/www/scanservjs/server/config.js"
+echo "/var/www/scanservjs/server/config.js"
 echo ""
 echo "And replace port: 8080 in line 17 by your preferred one"
+
+exit
