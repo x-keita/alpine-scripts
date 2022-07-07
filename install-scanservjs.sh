@@ -38,4 +38,4 @@ chmod 755 /etc/init.d/scanservjs
 rc-update add scanservjs default
 
 # Start service
-/etc/init.d/scanservjs start
+rc-service scanservjs start
