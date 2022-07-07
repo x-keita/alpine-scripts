@@ -37,5 +37,10 @@ chmod 755 /etc/init.d/scanservjs
 # Add service
 rc-update add scanservjs default
 
-# Start service
-rc-service scanservjs start
+echo ""
+echo "Installed! Run -> rc-service scanservjs start <- or reboot to start the server"
+echo "scanservjs runs by default on port 8080, if you have any issues run"
+echo ""
+echo "vi /var/www/scanservjs/server/config.js"
+echo ""
+echo "And replace port: 8080 in line 17 by your preferred one"
