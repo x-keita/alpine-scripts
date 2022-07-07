@@ -40,12 +40,12 @@ rc-update add scanservjs default
 rc-service scanservjs start
 
 echo ""
-echo "------------------------------------------------------------------------------"
+echo "----------------------------------------------------------------------------------"
 echo "Installed!"
 echo "scanservjs runs by default on port 8080, if you have any issues edit"
 echo ""
 echo "/var/www/scanservjs/server/config.js"
 echo ""
 echo "And replace port: 8080 in line 17 by your preferred one"
-
-exit
+echo "-----------------------------------------------------------------------------------"
+echo "Press CTRL+C to close script because I don't know how to program an exit signal lol
