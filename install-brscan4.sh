@@ -10,7 +10,7 @@ apk update && apk add --no-cache \
   dpkg
 
 # Download driver
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/drivers/scanner/brscan4-0.4.10-1.amd64.deb -o /tmp/brscan4-0.4.10-1.amd64.deb
+curl -L https://download.brother.com/welcome/dlf006645/brscan4-0.4.10-1.amd64.deb -o /tmp/brscan4-0.4.10-1.amd64.deb
 
 # Unpackage deb file
 dpkg-deb -xv /tmp/brscan4-0.4.10-1.amd64.deb $install_temp
@@ -26,10 +26,10 @@ cd /usr/lib/sane
 ln -sf libsane-brother4.so.1.0.7 libsane-brother4.so.1
 ln -sf libsane-brother4.so.1 libsane-brother4.so
 
-# Run post-install
+# Enable brscan4 for SANE
 /opt/brother/scanner/brscan4/setupSaneScan4 -i
 
-# From udevconfig.sh - Add rules for Brother scanners
+# From driver udevconfig.sh - Add rules for Brother scanners
 udevrulefile="/usr/lib/udev/rules.d/50-brother-brscan4-libsane-type1.rules"
 cat <<  %%_UDEV_RULE_%% > $udevrulefile
 #
@@ -59,13 +59,8 @@ chmod 755    $udevrulefile
 # Cleanup
 rm -rf /tmp/brscan4-0.4.10-1.amd64.deb /tmp/brscan4
 
-echo "----------------------------------------------------------------------------------"
-echo "You probably saw some errors but it's probably fine, probably."
+echo "-----------------------------------------------------------------------"
+echo "Installed!"
 echo "You can run -> scanimage -L <- and your scanner should appear!"
 echo "If you don't need dpkg you can uninstall it using -> apk del dpkg <-"
-echo "-----------------------------------------------------------------------------------"
-echo "Press CTRL+C to close script because I don't know how to program an exit signal lol"
-echo "-----------------------------------------------------------------------------------"
-
-
-exit 1
+echo "-----------------------------------------------------------------------"
