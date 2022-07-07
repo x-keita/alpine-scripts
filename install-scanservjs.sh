@@ -2,7 +2,7 @@
 
 # Bash script for installing scanservjs & sane on Alpine
 # Usage:
-#   curl -s https://raw.... /alpine-scanservjs.sh | sudo bash -s --
+#   curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | sudo bash -s --
 
 url=$(curl -s https://api.github.com/repos/sbs20/scanservjs/releases/latest | grep browser_download_url | cut -d '"' -f 4)
 
