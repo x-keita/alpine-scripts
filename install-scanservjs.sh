@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Bash script for installing scanservjs & sane on Alpine
-# Usage:
-#   curl -s https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | sudo bash -s --
 
 url=$(curl -s https://api.github.com/repos/sbs20/scanservjs/releases/latest | grep browser_download_url | cut -d '"' -f 4)
 
@@ -21,14 +19,23 @@ mkdir -p /var/www/scanservjs
 curl -L $url | tar -zxf - -C /var/www/scanservjs/
 
 # Imagemagick edits
-# Enable pdf
-sed -i 's/policy domain="coder" rights="none" pattern="PDF"/policy domain="coder" rights="read | write" pattern="PDF"' /etc/ImageMagick-7/policy.xml
-# Avoid out of memory issues with large or multiple scans
-sed -i 's/policy domain="resource" name="disk" value="1GiB"/policy domain="resource" name="disk" value="8GiB"' /etc/ImageMagick-7/policy.xml
+# Enable pdf and avoid out of memory issues with large or multiple scans
+  sed -i \
+    's/policy domain="coder" rights="none" pattern="PDF"/policy domain="coder" rights="read | write" pattern="PDF"'/ \
+    /etc/ImageMagick-7/policy.xml \
+  && sed -i \
+    's/policy domain="resource" name="disk" value="1GiB"/policy domain="resource" name="disk" value="8GiB"'/ \
+    /etc/ImageMagick-7/policy.xml
 
 # Install npm dependencies
 npm install -g npm@7.11.2
-
 cd /var/www/scanservjs/ && npm install --production
 
-node ./server/server.js
+# Create service
+curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/scanservjs -o /etc/init.d/scanservjs
+chmod 755 /etc/init.d/scanservjs
+# Add service
+rc-update add scanservjs default
+
+# Start service
+/etc/init.d/scanservjs start
