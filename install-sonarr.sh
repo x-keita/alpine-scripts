@@ -52,10 +52,18 @@ package_ver=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r '.[] | 
 cat <<  %%_INFO_%% > $info
 # Do Not Edit
 PackageVersion=$package_ver
-PackageAuthor=[Team Sonarr](https://sonarr.tv) & Alpine script by: [x-keita](https://github.com/x-keita/alpine-scripts)
+PackageAuthor=[Team Sonarr](https://sonarr.tv) & Alpine Linux install script by: [x-keita](https://github.com/x-keita/alpine-scripts)
 ReleaseVersion=$SONARR_VERSION
 UpdateMethod=builtIn
 Branch=main
 %%_INFO_%%
 
-exit 0
+# Script end text
+
+    cat << EOF
+------------------------------------------------------------------------------------
+Installed! Sonarr runs on localhost:8989 by default. 
+Also you can update directly from the application using the BuiltIn method and/or
+change branch to develop without any issues.
+------------------------------------------------------------------------------------
+EOF
