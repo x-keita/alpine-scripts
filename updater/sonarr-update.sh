@@ -7,6 +7,10 @@ if [ "${CURRENT_VERSION}" = "${SONARR_VERSION}" ]; then
     echo "Packages are the same version, no need to update."
     exit 1
 else
+    echo "Updating from ${CURRENT_VERSION} to ${SONARR_VERSION}"
+    # Remove previous verssion
+    rm -rf /usr/lib/sonarr/bin/*
+    
     # Download latest package
     curl -o \
       /tmp/sonarr.tar.gz -L \
