@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name="sonarr"
+pidfile="/run/${RC_SVCNAME}.pid"
+directory="/usr/lib/sonarr/bin/"
+command="/usr/bin/mono"
+command_args="--debug Sonarr.exe -nobrowser -data=/var/lib/sonarr"
+command_background=true
+
+depend() {
+	need net
+} 
