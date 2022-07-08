@@ -53,7 +53,7 @@ Branch=main
 
 # Add updater
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/updater/sonarr-update.sh -o /usr/lib/sonarr/updater
-chmod 755 /usr/lib/sonarr/updater.sh
+chmod 755 /usr/lib/sonarr/updater
 
 # Enable update script
 sonarr_config="/var/lib/sonarr/config.xml"
