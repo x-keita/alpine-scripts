@@ -43,7 +43,13 @@ rc-update add sonarr default
 rc-service sonarr start
 
 # Set version variables
-echo "UpdateMethod=External\nBranch=main\nPackageVersion=${SONARR_VERSION}\nPackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)" > /usr/lib/sonarr/package_info
+info="/usr/lib/sonarr/package_info"
+cat <<  %%_INFO_%% > $info
+PackageVersion=${SONARR_VERSION}
+PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
+UpdateMethod=External
+Branch=main
+%%_INFO_%%
 
 # Add updater
 updater="/usr/lib/sonarr/updater.sh"
@@ -75,7 +81,15 @@ else
 
 # Recreate package_info with updated PackageVersion
 rm -rf /usr/lib/sonarr/package_info
-echo "UpdateMethod=External\nBranch=main\nPackageVersion=${SONARR_VERSION}\nPackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)" > /usr/lib/sonarr/package_info
+
+updated_info="/usr/lib/sonarr/package_info"
+cat <<  %%_UPDATED_INFO_%% > $updated_info
+PackageVersion=${SONARR_VERSION}
+PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
+UpdateMethod=External
+Branch=main
+%%_UPDATED_INFO_%%
+
 fi
 exit 0
 %%_UPDATER_%%
