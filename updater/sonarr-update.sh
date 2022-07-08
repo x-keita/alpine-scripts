@@ -34,6 +34,3 @@ Branch=main
 
 fi
 exit 0
-%%_UPDATER_%%
-####
-chmod 755 $updater
