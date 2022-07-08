@@ -17,16 +17,16 @@ Install [scanservjs](https://github.com/sbs20/scanservjs)
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
 ```
 
+Install [sonarr](https://sonarr.tv)
+
+```bash
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
+```
+
 ## Drivers
 
 Install Brother brscan4 scanner driver for SANE (Requires to have sane-utils already installed!)
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-brscan4.sh | bash --
-```
-
-Install [sonarr](https://sonarr.tv)
-
-```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
 ```
