@@ -47,8 +47,7 @@ info="/usr/lib/sonarr/package_info"
 cat <<  %%_INFO_%% > $info
 PackageVersion=${SONARR_VERSION}
 PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
-UpdateMethod=External
-UpdateMethodMessage=run 'bash /usr/lib/sonarr/updater.sh' to install latest version
+UpdateMethod=Script
 Branch=main
 %%_INFO_%%
 
@@ -61,9 +60,9 @@ sonarr_config="/var/lib/sonarr/config.xml"
 
 if [[ -f "${sonarr_config}" ]]; then
   sed -i 's%<UpdateMechanism>.*</UpdateMechanism>%<UpdateMechanism>Script</UpdateMechanism>%' "${sonarr_config}"
-  sed -i 's%<UpdateScriptPath>.*</UpdateScriptPath>%<UpdateScriptPath>/bin/update</UpdateScriptPath>%' "${sonarr_config}"
+  sed -i 's%<UpdateScriptPath>.*</UpdateScriptPath>%<UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
   if [[ $(grep -c "UpdateScriptPath" "${sonarr_config}") -eq 0 ]]; then
-    sed -i 's%\(^</Config>$\)%  <UpdateMechanism>Script</UpdateMechanism>\n  <UpdateScriptPath>/bin/update</UpdateScriptPath>%' "${sonarr_config}"
+    sed -i 's%\(^</Config>$\)%  <UpdateMechanism>Script</UpdateMechanism>\n  <UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
     echo -n "</Config>" >> "${sonarr_config}"
   fi
 else
