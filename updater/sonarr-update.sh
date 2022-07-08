@@ -22,9 +22,6 @@ else
       /tmp/sonarr.tar.gz -C \
       /usr/lib/sonarr/bin --strip-components=1
 
-    # Remove integrated update service since we can't use it
-    rm -rf /usr/lib/sonarr/bin/Sonarr.Update
-
     # Post update cleanup
     rm -rf /tmp/sonarr.tar.gz
 
