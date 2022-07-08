@@ -34,7 +34,12 @@ rm -rf /usr/lib/sonarr/bin/Sonarr.Update && \
 # Post install cleanup
 rm -rf /tmp/sonarr.tar.gz
 
-# Run with 
-# cd /usr/lib/sonarr/bin
-# mono --debug Sonarr.exe -nobrowser -data=/var/lib/sonarr
-# Missing: Custom update script, start as a service
+# Create service
+curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/sonarr -o /etc/init.d/sonarr
+chmod 755 /etc/init.d/sonarr
+# Add service
+rc-update add sonarr default
+# Start server
+rc-service sonarr start
+
+# Missing: Custom update script, for now just run the script again to update.
