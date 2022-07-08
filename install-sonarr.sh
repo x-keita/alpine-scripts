@@ -29,7 +29,7 @@ mkdir -p /var/lib/sonarr
     /usr/lib/sonarr/bin --strip-components=1
 
 # Post install cleanup
-rm -rf /tmp/sonarr.tar.gz
+rm -rf /tmp/sonarr.tar.gz /usr/lib/sonarr/bin/Sonarr.Update
 
 # Create service
 curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/sonarr -o /etc/init.d/sonarr
@@ -40,44 +40,44 @@ rc-update add sonarr default
 rc-service sonarr start
 
 # Set version variables
-info="/usr/lib/sonarr/package_info"
-cat <<  %%_INFO_%% > $info
-PackageVersion=${SONARR_VERSION}
-PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
-UpdateMethod=Script
-Branch=main
-%%_INFO_%%
+#info="/usr/lib/sonarr/package_info"
+#cat <<  %%_INFO_%% > $info
+#PackageVersion=${SONARR_VERSION}
+#PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
+#UpdateMethod=Script
+#Branch=main
+#%%_INFO_%%
 
 # Add updater
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/updater/sonarr-update.sh -o /usr/lib/sonarr/updater
-chmod 755 /usr/lib/sonarr/updater
+#curl -L https://github.com/x-keita/alpine-scripts/raw/main/updater/sonarr-update.sh -o /usr/lib/sonarr/updater
+#chmod 755 /usr/lib/sonarr/updater
 
 # Enable update script
-sonarr_config="/var/lib/sonarr/config.xml"
-
-if [[ -f "${sonarr_config}" ]]; then
-  sed -i 's%<UpdateMechanism>.*</UpdateMechanism>%<UpdateMechanism>Script</UpdateMechanism>%' "${sonarr_config}"
-  sed -i 's%<UpdateScriptPath>.*</UpdateScriptPath>%<UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
-  if [[ $(grep -c "UpdateScriptPath" "${sonarr_config}") -eq 0 ]]; then
-    sed -i 's%\(^</Config>$\)%  <UpdateMechanism>Script</UpdateMechanism>\n  <UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
-    echo -n "</Config>" >> "${sonarr_config}"
-  fi
-else
-  {
-    echo "<Config>"
-    echo "  <LogLevel>info</LogLevel>"
-    echo "  <EnableSsl>False</EnableSsl>"
-    echo "  <Port>8989</Port>"
-    echo "  <SslPort>9898</SslPort>"
-    echo "  <BindAddress>*</BindAddress>"
-    echo "  <ApiKey>ef8d989bcfce443fae07a408c4700fd1</ApiKey>"
-    echo "  <AuthenticationMethod>None</AuthenticationMethod>"
-    echo "  <UpdateMechanism>Script</UpdateMechanism>"
-    echo "  <UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>"
-    echo "  <Branch>main</Branch>"
-    echo "  <SslCertHash></SslCertHash>"
-    echo "</Config>"
-  } > "${sonarr_config}"
-fi
-
-exit 0
+#sonarr_config="/var/lib/sonarr/config.xml"
+#
+#if [[ -f "${sonarr_config}" ]]; then
+#  sed -i 's%<UpdateMechanism>.*</UpdateMechanism>%<UpdateMechanism>Script</UpdateMechanism>%' "${sonarr_config}"
+#  sed -i 's%<UpdateScriptPath>.*</UpdateScriptPath>%<UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
+#  if [[ $(grep -c "UpdateScriptPath" "${sonarr_config}") -eq 0 ]]; then
+#    sed -i 's%\(^</Config>$\)%  <UpdateMechanism>Script</UpdateMechanism>\n  <UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>%' "${sonarr_config}"
+#    echo -n "</Config>" >> "${sonarr_config}"
+#  fi
+#else
+#  {
+#    echo "<Config>"
+#    echo "  <LogLevel>info</LogLevel>"
+#    echo "  <EnableSsl>False</EnableSsl>"
+#    echo "  <Port>8989</Port>"
+#    echo "  <SslPort>9898</SslPort>"
+#    echo "  <BindAddress>*</BindAddress>"
+#    echo "  <ApiKey>ef8d989bcfce443fae07a408c4700fd1</ApiKey>"
+#    echo "  <AuthenticationMethod>None</AuthenticationMethod>"
+#    echo "  <UpdateMechanism>Script</UpdateMechanism>"
+#    echo "  <UpdateScriptPath>/usr/lib/sonarr/updater</UpdateScriptPath>"
+#    echo "  <Branch>main</Branch>"
+#    echo "  <SslCertHash></SslCertHash>"
+#    echo "</Config>"
+#  } > "${sonarr_config}"
+#fi
+#
+#exit 0
