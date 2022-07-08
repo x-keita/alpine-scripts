@@ -25,7 +25,7 @@ curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | b
 
 ## Drivers
 
-Install Brother brscan4 scanner driver for SANE (Requires to have sane-utils already installed!)
+Install Brother brscan4 sane scanner driver (Requires to have sane-utils and sane-udev already installed!)
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-brscan4.sh | bash --
