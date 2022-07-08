@@ -8,6 +8,9 @@ if [ "${CURRENT_VERSION}" = "${SONARR_VERSION}" ]; then
     exit 1
 else
     echo "Updating from ${CURRENT_VERSION} to ${SONARR_VERSION}"
+    # Stop sonarr
+    rc-service sonarr stop
+    
     # Remove previous verssion
     rm -rf /usr/lib/sonarr/bin/*
     
@@ -33,8 +36,12 @@ cat <<  %%_UPDATED_INFO_%% > $updated_info
 PackageVersion=${SONARR_VERSION}
 PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
 UpdateMethod=External
+UpdateMethodMessage=run 'bash /usr/lib/sonarr/updater.sh' to install latest version
 Branch=main
 %%_UPDATED_INFO_%%
+
+    # Start sonarr again
+    rc-service sonarr start
 
 fi
 exit 0
