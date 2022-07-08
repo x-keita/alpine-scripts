@@ -49,7 +49,6 @@ PackageVersion=${SONARR_VERSION}
 PackageAuthor=[x-keita](https://github.com/x-keita/alpine-scripts)
 UpdateMethod=External
 UpdateMethodMessage=run 'bash /usr/lib/sonarr/updater.sh' to install latest version
-
 Branch=main
 %%_INFO_%%
 
