@@ -25,7 +25,7 @@ mkdir -p $SONARR_DIR/bin
 mkdir -p $SONARR_CONF
 
 # Download and install latest
-  curl -L  -L "https://download.sonarr.tv/v3/${BRANCH}/${RELEASE_VERSION}/Sonarr.main.${RELEASE_VERSION}.linux.tar.gz" -o /tmp/sonarr.tar.gz && \
+  curl -L "https://download.sonarr.tv/v3/${BRANCH}/${RELEASE_VERSION}/Sonarr.main.${RELEASE_VERSION}.linux.tar.gz" -o /tmp/sonarr.tar.gz && \
   tar xzf \
     /tmp/sonarr.tar.gz -C \
     $SONARR_DIR/bin --strip-components=1
