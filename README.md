@@ -29,6 +29,12 @@ Install [Prowlarr](https://prowlarr.com/) @ develop branch
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-prowlarr.sh | bash --
 ```
 
+Install [Radarr](https://radarr.video/) @ master branch
+
+```bash
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-radarr.sh | bash --
+```
+
 ## Drivers
 
 Install Brother brscan4 sane scanner driver (Requires to have sane-utils and sane-udev already installed!)
