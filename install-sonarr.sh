@@ -2,61 +2,56 @@
 
 # Bash script for installing sonarr on Alpine Linux
 
-sonarr_dir="/usr/lib/sonarr"
-sonarr_conf="/var/lib/sonarr"
-
-# Install required packages and dependencies
+# Install dependencies
 apk update && apk add --no-cache \
   curl \
   jq \
   libmediainfo \
   sqlite-libs
 
-# Fetch mono from testing branch
 apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   mono
 
-# Create sonarr install folders
-mkdir -p $sonarr_dir/bin
-mkdir -p $sonarr_conf
+# Set variables
+SONARR_DIR="/usr/lib/sonarr"
+SONARR_CONF="/var/lib/sonarr"
+BRANCH=main
+PKG_INFO=$SONARR__DIR/package_info
+PKG_VER=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r '.[] | select(.branch==\"$BRANCH\") | .version' | cut -b 1-5)
+RELEASE_VERSION=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"$BRANCH\") | .version")
 
-# Download sonarr
-  if [ -z ${SONARR_VERSION+x} ]; then \
-    SONARR_VERSION=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"main\") | .version"); \
-  fi && \
-  curl -o \
-    /tmp/sonarr.tar.gz -L \
-    "https://download.sonarr.tv/v3/main/${SONARR_VERSION}/Sonarr.main.${SONARR_VERSION}.linux.tar.gz" && \
+# Create sonarr install folders
+mkdir -p $SONARR_DIR/bin
+mkdir -p $SONARR_CONF
+
+# Download and install latest
+  curl -L  -L "https://download.sonarr.tv/v3/${BRANCH}/${RELEASE_VERSION}/Sonarr.main.${RELEASE_VERSION}.linux.tar.gz" -o /tmp/sonarr.tar.gz && \
   tar xzf \
     /tmp/sonarr.tar.gz -C \
-    $sonarr_dir/bin --strip-components=1
+    $SONARR_DIR/bin --strip-components=1
 
 # Post install cleanup
-rm -rf \
-  /tmp/sonarr.tar.gz \
-  $sonarr_dir/bin/Sonarr.Update
+  rm -rf \
+    /tmp/sonarr.tar.gz \
+    $SONARR_DIR/bin/Sonarr.Update
 
 # Create service
 curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/sonarr -o /etc/init.d/sonarr
 chmod 755 /etc/init.d/sonarr
 
-# Add service
+# Add service to start on boot
 rc-update add sonarr default
 # Start server
 rc-service sonarr start
 
-# Set version variables
-info="$sonarr_dir/package_info"
-package_ver=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r '.[] | select(.branch=="main") | .version' | cut -b 1-5)
-
-cat <<  %%_INFO_%% > $info
+cat <<  %%_PKG_INFO_%% > $PKG_INFO
 # Do Not Edit
-PackageVersion=$package_ver
+PackageVersion=$PKG_VER
 PackageAuthor=[Team Sonarr](https://sonarr.tv) & Alpine Linux install script by: [x-keita](https://github.com/x-keita/alpine-scripts)
-ReleaseVersion=$SONARR_VERSION
+ReleaseVersion=$RELEASE_VERSION
 UpdateMethod=builtIn
-Branch=main
-%%_INFO_%%
+Branch=$BRANCH
+%%_PKG_INFO_%%
 
 # Script end text
 
