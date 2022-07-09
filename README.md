@@ -17,10 +17,16 @@ Install [scanservjs](https://github.com/sbs20/scanservjs)
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
 ```
 
-Install [sonarr](https://sonarr.tv)
+Install [Sonarr](https://sonarr.tv)
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
+```
+
+Install [Prowlarr](https://prowlarr.com/)
+
+```bash
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-prowlarr.sh | bash --
 ```
 
 ## Drivers
