@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name="prowlarr"
+pidfile="/run/${RC_SVCNAME}.pid"
+directory="/usr/lib/prowlarr/bin/"
+command="Prowlarr"
+command_args="-nobrowser -data=/var/lib/prowlarr"
+command_background=true
+
+depend() {
+	need net
+} 
