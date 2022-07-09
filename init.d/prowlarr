@@ -3,7 +3,7 @@
 name="prowlarr"
 pidfile="/run/${RC_SVCNAME}.pid"
 directory="/usr/lib/prowlarr/bin/"
-command="Prowlarr"
+command="/usr/lib/prowlarr/bin/Prowlarr"
 command_args="-nobrowser -data=/var/lib/prowlarr"
 command_background=true
 
