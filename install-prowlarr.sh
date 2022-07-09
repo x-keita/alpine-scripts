@@ -29,7 +29,7 @@ mkdir -p $PROWLARR_CONF
 
 # Post install cleanup
   rm -rf \
-    /tmp/prowlarr.tar.gz
+    /tmp/prowlarr.tar.gz \
     $PROWLARR_DIR/bin/Prowlarr.Update
 
 # Create service
