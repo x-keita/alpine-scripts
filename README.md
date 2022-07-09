@@ -17,13 +17,13 @@ Install [scanservjs](https://github.com/sbs20/scanservjs)
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
 ```
 
-Install [Sonarr](https://sonarr.tv)
+Install [Sonarr](https://sonarr.tv) @ main branch
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
 ```
 
-Install [Prowlarr](https://prowlarr.com/)
+Install [Prowlarr](https://prowlarr.com/) @ develop branch
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-prowlarr.sh | bash --
