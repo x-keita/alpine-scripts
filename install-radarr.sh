@@ -22,7 +22,7 @@ mkdir -p $RADARR_DIR/bin
 mkdir -p $RADARR_CONF
 
 # Download and install latest
-  curl -L  -L "https://radarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${RELEASE_VERSION}&os=linuxmusl&runtime=netcore&arch=x64" -o /tmp/radarr.tar.gz && \
+  curl -L "https://radarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${RELEASE_VERSION}&os=linuxmusl&runtime=netcore&arch=x64" -o /tmp/radarr.tar.gz && \
   tar xzf \
     /tmp/radarr.tar.gz -C \
     $RADARR_DIR/bin --strip-components=1
