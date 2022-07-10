@@ -35,6 +35,12 @@ Install [Radarr](https://radarr.video/) @ master branch
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-radarr.sh | bash --
 ```
 
+Install [HomeAssistant Core](https://www.home-assistant.io/) 
+
+```bash
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bash --
+```
+
 ## Drivers
 
 Install Brother brscan4 sane scanner driver (Requires to have sane-utils and sane-udev already installed!)
