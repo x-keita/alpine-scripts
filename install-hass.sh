@@ -58,6 +58,7 @@ RELEASE_VERSION=$(curl -sX GET https://api.github.com/repos/home-assistant/core/
 
 # Create directories
 mkdir -p /tmp/core
+mkdir -p /var/lib/hass
 
 # Download latest release source
 curl -L "https://github.com/home-assistant/core/archive/${RELEASE_VERSION}.tar.gz" -o /tmp/core.tar.gz  && \
