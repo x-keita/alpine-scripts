@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+name="home-assistant-core"
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/bin/hass"
+command_args="-c /var/lib/hass"
+command_background=true
+
+depend() {
+	need net
+} 
+start_pre() {
+  setcap 'cap_net_bind_service=+ep' /usr/bin/python3.10
+}
