@@ -61,8 +61,7 @@ mkdir -p /tmp/core
 mkdir -p /var/lib/hass
 
 # Download latest release source
-#curl -L "https://github.com/home-assistant/core/archive/${RELEASE_VERSION}.tar.gz" -o /tmp/core.tar.gz  && \
-curl -L "https://github.com/home-assistant/core/archive/2022.7.0.tar.gz" -o /tmp/core.tar.gz  && \
+curl -L "https://github.com/home-assistant/core/archive/${RELEASE_VERSION}.tar.gz" -o /tmp/core.tar.gz  && \
   tar xf \
     /tmp/core.tar.gz -C \
     /tmp/core --strip-components=1
