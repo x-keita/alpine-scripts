@@ -35,7 +35,7 @@ Install [Radarr](https://radarr.video/) @ master branch
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-radarr.sh | bash --
 ```
 
-Install [HomeAssistant Core](https://www.home-assistant.io/) 
+Install [HomeAssistant Core](https://www.home-assistant.io/) | Note: Make sure you have at least 3.5 GB free before attempting to install
 
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bash --
