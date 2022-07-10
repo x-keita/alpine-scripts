@@ -66,10 +66,10 @@ curl -L "https://github.com/home-assistant/core/archive/${RELEASE_VERSION}.tar.g
     /tmp/core.tar.gz -C \
     /tmp/core --strip-components=1
 
-# Set base
+# Set install arch
 HASS_BASE=$(cat /tmp/core/build.yaml | grep 'amd64: ' | cut -d: -f3)
 
-# Install HASS
+# Install HASS and required site packages
 mkdir -p /pip-packages
 
   pip install --target /pip-packages --no-cache-dir --upgrade \
@@ -92,7 +92,7 @@ cd /tmp/core && \
     homeassistant==${RELEASE_VERSION} && \
   pip install ${PIPFLAGS} \
     pycups \
-    PySwitchbot && \
+    PySwitchbot
 
 # Post-install cleanup
   apk del --purge \
@@ -103,7 +103,12 @@ cd /tmp/core && \
     ; done && \
   rm -rf \
     /tmp/core.tar.gz \
-    /tmp/core
+    /tmp/core \
+    /usr/LICENSE \
+    /usr/requirements.txt \
+    /root/.cache \
+    /root/.cargo \
+    /usr/config
 
 # Create service
 curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/hass -o /etc/init.d/hass
