@@ -9,42 +9,90 @@ You need to install bash and curl before running any script. Run the following l
 ```bash
 apk update && apk add --no-cache bash curl
 ```
-## Applications
 
-Install [scanservjs](https://github.com/sbs20/scanservjs)
+## The Arrs!
 
-```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
-```
+<details>
+  <summary>Sonarr @ https://sonarr.tv</summary>
 
-Install [Sonarr](https://sonarr.tv) @ main branch
+  #### Details
+  - **Installed to**: /usr/lib/sonarr
+  - **Upgradeable?**: Yes, using built-in updater
+  - **Branch**: Main (Can change on GUI)
 
+  #### Script
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
 ```
+</details>
 
-Install [Prowlarr](https://prowlarr.com/) @ develop branch
+<details>
+  <summary>Prowlarr @ https://prowlarr.com</summary>
 
+  #### Details
+  - **Installed on**: /usr/lib/prowlarr
+  - **Upgradeable?**: Yes, using built-in updater
+  - **Branch**: Develop (Only branch available)
+
+  #### Script
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-prowlarr.sh | bash --
 ```
+</details>
 
-Install [Radarr](https://radarr.video/) @ master branch
+<details>
+  <summary>Radarr @ https://radarr.video</summary>
 
+  #### Details
+  - **Installed on**: /usr/lib/radarr
+  - **Upgradeable?**: Yes, using built-in updater
+  - **Branch**: Master (Can change on GUI)
+
+  #### Script
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-radarr.sh | bash --
 ```
+</details>
 
-Install [HomeAssistant Core](https://www.home-assistant.io/) | Note: Make sure you have at least 3.5 GB free before attempting to install
+## Home Automation
 
+<details>
+  <summary>HomeAssistant Core @ https://www.home-assistant.io</summary>
+
+  #### Details
+  - **Space required**: At least 3.5 GB for first time install. Post-install storage usage goes down to 1.5~ GB
+  - **Upgradeable?**: Yes, run `pip3 install --upgrade homeassistant` to install latest version
+  - **Bugs**: On System Health, `Installation Type` appears as `Unknown`
+
+  #### Script
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bash --
 ```
+</details>
 
-## Drivers
+## Printer & Scanning / Document managers
 
-Install Brother brscan4 sane scanner driver (Requires to have sane-utils and sane-udev already installed!)
+<details>
+  <summary>Scanservjs @ https://github.com/sbs20/scanservjs</summary>
 
+  #### Details
+  - **Installed on**: /var/www/scanservjs
+  - **Upgradeable?**: Yes, run the script again to install latest version
+
+  #### Script
+```bash
+curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
+```
+</details>
+
+<details>
+  <summary>Brother SANE brscan4 driver</summary>
+
+  #### Details
+  - **Pre-requisites**: sane-utils and sane-udev
+
+  #### Script
 ```bash
 curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-brscan4.sh | bash --
 ```
+</details>
