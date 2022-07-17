@@ -81,7 +81,7 @@ curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bas
 
   #### Script
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh | bash --
+ash <(wget -qO- https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh)
 ```
 </details>
 
