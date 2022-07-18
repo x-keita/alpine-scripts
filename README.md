@@ -18,7 +18,7 @@ apk update && apk add --no-cache bash curl
   #### Details
   - **Installed to**: /usr/lib/sonarr
   - **Upgradeable?**: Yes, using built-in updater
-  - **Branch**: Main (Can change on GUI)
+  - **Branch**: You can choose during install and change later on WebUI
 
   #### Script
 ```bash
