@@ -9,7 +9,9 @@ apk add -U --upgrade --no-cache \
   libmediainfo \
   sqlite-libs
 apk add -U --upgrade --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-  mono
+  mono && \
+  # Update certificates for mono
+  /usr/sbin/update-ca-certificates
 
 # Package variables
 read -r -p "Which sonarr branch do you want to install? <main/develop> " prompt
@@ -27,7 +29,7 @@ PKG_CONF="/var/lib/sonarr"
 #PKG_INFO=$SONARR__DIR/package_info
 #VERSION=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r '.[] | select(.branch==\"$PKG_BRANCH\") | .version' | cut -b 1-5)
 # Userspace variables
-username=prowlarr
+username=sonarr
 
 # Create sonarr install folders
 mkdir -p $PKG_DIR
