@@ -9,9 +9,7 @@ apk add -U --upgrade --no-cache \
   libmediainfo \
   sqlite-libs
 apk add -U --upgrade --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-  mono && \
-  # Update certificates for mono
-  /usr/bin/cert-sync /etc/ssl/certs/ca-certificates.crt
+  mono
 
 # Package variables
 read -r -p "Which sonarr branch do you want to install? <main/develop> " prompt
