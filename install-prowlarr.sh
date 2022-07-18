@@ -12,7 +12,7 @@ apk add -U --upgrade --no-cache \
 # Package variables
 PKG_BRANCH=develop
 PKG_VER=$(curl -sL "https://prowlarr.servarr.com/v1/update/${PKG_BRANCH}/changes?runtime=netcore&os=linuxmusl" | jq -r '.[0].version')
-PKG_DIR="/usr/lib/prowlarr"
+PKG_DIR="/opt/prowlarr"
 PKG_CONF="/var/lib/prowlarr"
 VERSION=$(echo $PKG_VER | cut -b 1-5)
 # Userspace variables
