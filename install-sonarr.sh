@@ -11,7 +11,7 @@ apk add -U --upgrade --no-cache \
 apk add -U --upgrade --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   mono && \
   # Update certificates for mono
-  /usr/sbin/update-ca-certificates
+  /usr/bin/cert-sync /etc/ssl/certs/ca-certificates.crt
 
 # Package variables
 read -r -p "Which sonarr branch do you want to install? <main/develop> " prompt
