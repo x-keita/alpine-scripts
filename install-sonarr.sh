@@ -22,7 +22,7 @@ if [[ $prompt == "main" || $prompt == "Main" || $prompt == "MAIN" ]]
     PKG_BRANCH=develop
 fi
 PKG_VER=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"$PKG_BRANCH\") | .version")
-PKG_DIR="/usr/lib/sonarr"
+PKG_DIR="/opt/sonarr"
 PKG_CONF="/var/lib/sonarr"
 VERSION=$(echo $PKG_VER | cut -b 1-5)
 # Userspace variables
