@@ -16,7 +16,7 @@ apk update && apk add --no-cache bash curl
   <summary>Sonarr @ https://sonarr.tv</summary>
 
   #### Details
-  - **Installed to**: /usr/lib/sonarr
+  - **Installed to**: /opt/sonarr
   - **Upgradeable?**: Yes, using built-in updater
   - **Branch**: You can choose during install and change later on WebUI
 
@@ -30,7 +30,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
   <summary>Prowlarr @ https://prowlarr.com</summary>
 
   #### Details
-  - **Installed on**: /usr/lib/prowlarr
+  - **Installed on**: /opt/prowlarr
   - **Upgradeable?**: Yes, using built-in updater
   - **Branch**: Develop (Only branch available)
 
@@ -44,9 +44,9 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
   <summary>Radarr @ https://radarr.video</summary>
 
   #### Details
-  - **Installed on**: /usr/lib/radarr
+  - **Installed on**: /opt/radarr
   - **Upgradeable?**: Yes, using built-in updater
-  - **Branch**: Master (Can change on GUI)
+  - **Branch**: You can choose during install and change later on WebUI
 
   #### Script
 ```bash
