@@ -58,11 +58,6 @@ if [ -d "$PKG_UPD" ]; then
     cp -a -v $PKG_UPD/config $PKG_DIR/
 fi
 
-# Set permissions
-chown -R $username:users $PKG_DIR/config
-chown -R $username:users $PKG_DIR/data
-chmod +x $PKG_DIR/server/server.js
-
 # Imagemagick edits
 # Enable pdf and avoid out of memory issues with large or multiple scans
 #  sed -i \
@@ -96,6 +91,11 @@ depend() {
     need net
 }
 EOF
+
+# Set permissions
+chown -R $username:users $PKG_DIR/config
+chown -R $username:users $PKG_DIR/data
+chmod +x $PKG_DIR/server/server.js
 chmod 755 /etc/init.d/scanservjs
 
 # Add service
@@ -110,14 +110,13 @@ if [[ $prompt == "YES" || $prompt == "yes" || $prompt == "Yes" ]]
     curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-brscan4.sh | ash --
 fi
 
-
     cat << EOF
 
 ------------------------------------------------------------------------------------
 Installed! By default scanservjs runs on port 8080, if you have any issues you can
 change the port by editing $PKG_DIR/server/config.js @ Line 17
 
-Also, by default files are saved into /var/www/scanservjs/data/output you can change
+Also, by default files are saved into $PKG_DIR/data/output you can change
 this by editing $PKG_DIR/server/config.js @ Line 47
 ------------------------------------------------------------------------------------
 
