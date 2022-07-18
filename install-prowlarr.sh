@@ -3,54 +3,64 @@
 # Bash script for installing prowlarr on Alpine Linux
 
 # Install dependencies
-  apk add --no-cache \
+apk add -U --upgrade --no-cache \
     curl \
     jq \
     icu-libs \
     sqlite-libs
 
-# Set variables
-PROWLARR_DIR="/usr/lib/prowlarr"
-PROWLARR_CONF="/var/lib/prowlarr"
-BRANCH=develop
-PKG_INFO=$PROWLARR_DIR/package_info
-PKG_VER=$(curl -sL "https://prowlarr.servarr.com/v1/update/${BRANCH}/changes?runtime=netcore&os=linuxmusl" | jq -r '.[0].version' | cut -b 1-5)
-RELEASE_VERSION=$(curl -sL "https://prowlarr.servarr.com/v1/update/${BRANCH}/changes?runtime=netcore&os=linuxmusl" | jq -r '.[0].version')
+# Package variables
+PKG_BRANCH=develop
+PKG_VER=$(curl -sL "https://prowlarr.servarr.com/v1/update/${PKG_BRANCH}/changes?runtime=netcore&os=linuxmusl" | jq -r '.[0].version')
+PKG_DIR="/opt/prowlarr"
+PKG_CONF="/var/lib/prowlarr"
+# Userspace variables
+username=prowlarr
 
-# Create directories
-mkdir -p $PROWLARR_DIR/bin
-mkdir -p $PROWLARR_CONF
+# Create install folder
+mkdir -p $PKG_DIR
+mkdir -p $PKG_CONF
 
-# Download and install latest
-  curl -L "https://prowlarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${RELEASE_VERSION}&os=linuxmusl&runtime=netcore&arch=x64" -o /tmp/prowlarr.tar.gz  && \
+# User management
+adduser -u 1000 -H -D $username
+
+# Download and install latest prowlarr release
+  curl -L "https://prowlarr.servarr.com/v1/update/${PKG_BRANCH}/updatefile?version=${PKG_VER}&os=linuxmusl&runtime=netcore&arch=x64" -o /tmp/prowlarr.tar.gz  && \
   tar xzf \
     /tmp/prowlarr.tar.gz -C \
-    $PROWLARR_DIR/bin --strip-components=1
+    $PKG_DIR --strip-components=1
 
 # Post install cleanup
   rm -rf \
-    /tmp/prowlarr.tar.gz \
-    $PROWLARR_DIR/bin/Prowlarr.Update
+    /tmp/prowlarr.tar.gz
 
 # Create service
-curl -L https://raw.githubusercontent.com/x-keita/alpine-scripts/main/init.d/prowlarr -o /etc/init.d/prowlarr
+cat << EOF >> /etc/init.d/prowlarr
+#!/sbin/openrc-run
+
+name="prowlarr"
+pidfile="/run/prowlarr.pid"
+directory="$PKG_DIR"
+command="$PKG_DIR/Prowlarr"
+command_args="-nobrowser -data=$PKG_CONF"
+command_background=true
+command_user="$username"
+command_group="$username"
+
+depend() {
+    need net
+}
+EOF
+
+# Set permissions
+chown $username:$username -R $PKG_DIR
+chown $username:$username -R $PKG_CONF
 chmod 755 /etc/init.d/prowlarr
 
-# Add service to start on boot
+# Add service
 rc-update add prowlarr default
 # Start server
 rc-service prowlarr start
-
-cat <<  %%_PKG_INFO_%% > $PKG_INFO
-# Do Not Edit
-PackageVersion=$PKG_VER
-PackageAuthor=[Team Prowlarr](https://prowlarr.com/) & Alpine Linux install script by: [x-keita](https://github.com/x-keita/alpine-scripts)
-ReleaseVersion=$RELEASE_VERSION
-UpdateMethod=builtIn
-Branch=$BRANCH
-%%_PKG_INFO_%%
-
-# Script end text
 
     cat << EOF
 ------------------------------------------------------------------------------------
