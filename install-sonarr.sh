@@ -83,6 +83,9 @@ rc-service sonarr start
 #Branch=$BRANCH
 #%%_PKG_INFO_%%
 
+# Add mono certs
+cert-sync /etc/ssl/certs/ca-certificates.crt
+
 # Script end text
 
     cat << EOF
