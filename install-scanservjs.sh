@@ -85,9 +85,9 @@ cat << EOF >> /etc/init.d/scanservjs
 #!/sbin/openrc-run
 
 name="scanservjs"
-pidfile="/run/${RC_SVCNAME}.pid"
+pidfile="/run/scanservjs.pid"
 command="/usr/bin/node"
-directory="/var/www/scanservjs/"
+directory="$PKG_DIR"
 command_args="./server/server.js"
 command_background=true
 command_user="$username"
@@ -115,10 +115,10 @@ fi
 
 ------------------------------------------------------------------------------------
 Installed! By default scanservjs runs on port 8080, if you have any issues you can
-change the port by editing /var/www/scanservjs/server/config.js @ Line 17
+change the port by editing $PKG_DIR/server/config.js @ Line 17
 
 Also, by default files are saved into /var/www/scanservjs/data/output you can change
-this by editing /var/www/scanservjs/server/config.js @ Line 47
+this by editing $PKG_DIR/server/config.js @ Line 47
 ------------------------------------------------------------------------------------
 
 EOF
