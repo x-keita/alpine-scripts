@@ -24,7 +24,7 @@ fi
 PKG_VER=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"$PKG_BRANCH\") | .version")
 PKG_DIR="/usr/lib/sonarr"
 PKG_CONF="/var/lib/sonarr"
-VERSION=$(curl -sX GET http://services.sonarr.tv/v1/releases | jq -r ".[] | select(.branch==\"$PKG_BRANCH\") | .version" | cut -b 1-5)
+VERSION=$(echo $PKG_VER | cut -b 1-5)
 # Userspace variables
 username=sonarr
 
