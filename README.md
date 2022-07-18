@@ -22,7 +22,7 @@ apk update && apk add --no-cache bash curl
 
   #### Script
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | bash --
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-sonarr.sh)
 ```
 </details>
 
@@ -36,7 +36,7 @@ curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-sonarr.sh | b
 
   #### Script
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-prowlarr.sh | bash --
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-prowlarr.sh)
 ```
 </details>
 
@@ -81,7 +81,7 @@ curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bas
 
   #### Script
 ```bash
-ash <(wget -qO- https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh)
+bash <(wget -qO- https://github.com/x-keita/alpine-scripts/raw/main/install-scanservjs.sh)
 ```
 </details>
 
