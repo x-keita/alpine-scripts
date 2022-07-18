@@ -45,7 +45,6 @@ command="$PKG_DIR/Prowlarr"
 command_args="-nobrowser -data=$PKG_CONF"
 command_background=true
 command_user="$username"
-command_group="$username"
 
 depend() {
     need net
