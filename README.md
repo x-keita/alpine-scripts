@@ -54,6 +54,21 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
 ```
 </details>
 
+## Downloaders
+
+<details>
+  <summary>qbittorrent-nox (Official Apk) @ https://www.qbittorrent.org/</summary>
+
+  #### Details
+  - **UID/GID**: By default qbittorrent creates a user, the scripts adds it to the GID 1000
+  - **Upgradeable?**: Yes, from console with apk
+
+  #### Script
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-qbittorrentnox.sh)
+```
+</details>
+
 ## Home Automation
 
 <details>
