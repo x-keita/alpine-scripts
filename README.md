@@ -50,7 +50,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
 
   #### Script
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-radarr.sh | bash --
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-radarr.sh)
 ```
 </details>
 
