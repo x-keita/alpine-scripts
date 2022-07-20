@@ -165,8 +165,8 @@ cat << EOF >> /usr/share/fluxbox/apps
 [end]
 EOF
 
-# Fix JDownloader2 theme
-sed -i 's+JAVA_SYSTEM+default+g' /opt/jdownloader/cfg/org.jdownloader.settings.GraphicalUserInterfaceSettings.json
+# Disable Tray extension
+echo '{"enabled" : false}' >> /opt/jdownloader/cfg/org.jdownloader.gui.jdtrayicon.TrayExtension.json
 
 # Add services to start on boot
 rc-update add xvfb default
