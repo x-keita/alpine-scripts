@@ -167,6 +167,8 @@ EOF
 
 # Disable Tray extension
 echo '{"enabled" : false}' >> /opt/jdownloader/cfg/org.jdownloader.gui.jdtrayicon.TrayExtension.json
+chown $username:$username -R $PKG_DIR/cfg
+
 
 # Add services to start on boot
 rc-update add xvfb default
