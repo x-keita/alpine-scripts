@@ -166,9 +166,6 @@ cat << EOF >> /usr/share/fluxbox/apps
 EOF
 
 # JDownloader 2 Patches
-# Remove exit button
-mkdir -p $PKG_DIR/cfg/menus_v2
-curl -L "https://raw.githubusercontent.com/x-keita/alpine-scripts/main/jdownloader2-novnc/MainMenu.menu.json" -o $PKG_DIR/cfg/menus_v2/MainMenu.menu.json
 # Disable TrayExtension by default
 curl -L "https://raw.githubusercontent.com/x-keita/alpine-scripts/main/jdownloader2-novnc/org.jdownloader.gui.jdtrayicon.TrayExtension.json" -o $PKG_DIR/cfg/org.jdownloader.gui.jdtrayicon.TrayExtension.json
 # Fix permissions
