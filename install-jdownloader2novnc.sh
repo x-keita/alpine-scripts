@@ -67,6 +67,7 @@ command_background=true
 
 depend() {
     need net
+    after xvfb
 }
 start_pre() {
   export DISPLAY=:0
@@ -85,6 +86,7 @@ command_background=true
 
 depend() {
     need net
+    after x11vnc
 }
 start_pre() {
   export DISPLAY=:0
@@ -103,6 +105,7 @@ command_background=true
 
 depend() {
     need net
+    after novnc
 }
 start_pre() {
   export DISPLAY=:0
@@ -122,6 +125,7 @@ command_user="$username"
 
 depend() {
     need net
+    after fluxbox
 }
 start_pre() {
   export DISPLAY=:0
