@@ -69,6 +69,20 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
 ```
 </details>
 
+<details>
+  <summary>JDownloader2 with No-VNC @ https://jdownloader.org/</summary>
+
+  #### Details
+  - **UID/GID**: By default qbittorrent creates a user, the scripts adds it to the GID 1000
+  - **Upgradeable?**: Yes, from application UI & schedule.
+  - **Notes**: Runs official JDownloader2 via VNC with noVNC preloaded, you can connect to noVNC in localhost:8080 or VNC in localhost:5900
+
+  #### Script
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-qbittorrentnox.sh)
+```
+</details>
+
 ## Home Automation
 
 <details>
@@ -76,12 +90,11 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
 
   #### Details
   - **Space required**: At least 3.5 GB for first time install. Post-install storage usage goes down to 1.5~ GB
-  - **Upgradeable?**: Yes, run `pip3 install --upgrade homeassistant` to install latest version
-  - **Bugs**: On System Health, `Installation Type` appears as `Unknown`
+  - **Upgradeable?**: Yes, run `pip3 install --upgrade homeassistant` to install latest version.
 
   #### Script
 ```bash
-curl -L https://github.com/x-keita/alpine-scripts/raw/main/install-hass.sh | bash --
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-hass.sh)
 ```
 </details>
 
