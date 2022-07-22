@@ -131,6 +131,20 @@ rc-update add hass-core default
 # Start server
 rc-service hass-core start
 
+# Optional HACS install
+read -r -p "Do you want to install the Home Assistant Community Store (https://hacs.xyz/) <yes/no> " prompt
+if [[ $prompt == "YES" || $prompt == "yes" || $prompt == "Yes" ]]
+  then
+    echo "Proceeding to install HACS"
+    echo "Suspending HASS..."
+    rc-service hass-core stop
+    cd $PKG_CONF
+    apk add -U --upgrade --no-cache bash
+    su -c "wget -O - https://get.hacs.xyz | bash -" $username
+    echo "Restarting HASS Core..."
+    rc-service hass-core start
+fi
+
     cat << EOF
 ------------------------------------------------------------------------------------
 Installed! HomeAssistant runs on localhost:8123 by default. 
