@@ -54,14 +54,14 @@ PKG_VER=$(curl -sX GET https://api.github.com/repos/home-assistant/core/releases
 PKG_CONF="/var/lib/hass"
 PIP_CMD="--no-cache-dir --use-deprecated=legacy-resolver"
 # Userspace variables
-USERNAME=homeassistant
-UID="1000"
+username=homeassistant
+uid=1000
 
 # Create hass install folders
 mkdir -p $PKG_CONF
 
 # User management
-adduser -u $UID -D $USERNAME
+adduser -u $uid -D $username
 
 # Download latest release source
 mkdir -p /tmp/core
@@ -122,7 +122,7 @@ start_pre() {
 EOF
 
 # Set permissions
-chown $USERNAME:$USERNAME -R $PKG_CONF
+chown $username:$username -R $PKG_CONF
 chmod 755 /etc/init.d/hass-core
 
 # Add service to start on boot
