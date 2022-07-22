@@ -9,6 +9,9 @@ apk add -U --upgrade --no-cache \
 deluser qbittorrent
 adduser -u 1000 -D -H qbittorrent
 
+# Set permissions
+chown qbittorrent:qbittorrent -R /var/lib/qbittorrent
+
 # Add service to start on boot
 rc-update add qbittorrent-nox default
 # Start server
