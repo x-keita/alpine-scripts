@@ -112,6 +112,7 @@ pidfile="/run/hass-core.pid"
 command="/usr/bin/hass"
 command_args="-c $PKG_CONF"
 command_background=true
+command_user="$username"
 
 depend() {
     need net
