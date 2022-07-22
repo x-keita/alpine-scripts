@@ -73,7 +73,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
   <summary>JDownloader2 with No-VNC @ https://jdownloader.org/</summary>
 
   #### Details
-  - **UID/GID**: By default qbittorrent creates a user, the scripts adds it to the GID 1000
+  - **UID/GID**: JDownloader2 will run with UID 1000 by default.
   - **Upgradeable?**: Yes, from application UI & schedule.
   - **Notes**: Runs official JDownloader2 via VNC with noVNC preloaded, you can connect to noVNC in localhost:8080 or VNC in localhost:5900
 
