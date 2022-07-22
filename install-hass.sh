@@ -55,7 +55,7 @@ PKG_CONF="/var/lib/hass"
 PIP_CMD="--no-cache-dir --use-deprecated=legacy-resolver"
 # Userspace variables
 USERNAME=homeassistant
-UID=1000
+UID="1000"
 
 # Create hass install folders
 mkdir -p $PKG_CONF
