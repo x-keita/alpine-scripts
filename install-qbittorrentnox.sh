@@ -6,8 +6,8 @@ apk add -U --upgrade --no-cache \
   qbittorrent-nox
 
 # User management
-addgroup -g 1000 torrent
-adduser qbittorrent torrent
+deluser qbittorrent
+adduser -u 1000 -D -H qbittorrent
 
 # Add service to start on boot
 rc-update add qbittorrent-nox default
