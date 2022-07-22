@@ -91,6 +91,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
   #### Details
   - **Space required**: At least 3.5 GB for first time install. Post-install storage usage goes down to 1.5~ GB
   - **Upgradeable?**: Yes, run `pip3 install --upgrade homeassistant` to install latest version.
+  - **Notes**: Script includes the option to install HACS instead of doing it later manually.
 
   #### Script
 ```bash
