@@ -54,6 +54,20 @@ bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/i
 ```
 </details>
 
+<details>
+  <summary>Bazarr @ https://bazarr.media</summary>
+
+  #### Details
+  - **Installed to**: /opt/bazarr
+  - **Upgradeable?**: Yes, using built-in updater
+  - **Branch**: You can choose during install and change later on WebUI
+
+  #### Script
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/x-keita/alpine-scripts/main/install-bazarr.sh)
+```
+</details>
+
 ## Downloaders
 
 <details>
